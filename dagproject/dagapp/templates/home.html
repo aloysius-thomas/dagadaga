@@ -2,13 +2,23 @@
 {% block content %}
     <div class="container m-2">
         <h3 class="card p-2">REGISTRATION</h3>
-        <div class="">
-            <form action="" method="post">
 
-                {% csrf_token %}
-                {{ forms.as_p }}
-            </form>
-        </div>
+        <form action="" method="post" class="m-5 p-5 card">
+            {% csrf_token %}
+            {{ forms.non_field_errors }}
+            {% for hidden_field in forms.hidden_fields %}
+                {{ hidden_field.errors }}
+                {{ hidden_field }}
+            {% endfor %}
+            {% for field in forms.visible_fields %}
+                <label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
+                {{ field }}
+                {{ field.errors }}
+            {% endfor %}
+            <br>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
     </div>
 {% endblock %}
+
 

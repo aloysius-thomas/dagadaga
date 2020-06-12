@@ -11,4 +11,10 @@ def create(request):
     context = {
         "forms": form,
     }
+    for i in form.visible_fields():
+        for j in i:
+            print(j)
+            print(j.data)
+            print(type(j.data))
+        break
     return render(request, "home.html", context)
