@@ -1,8 +1,6 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-from forms import UserCreateForm
-
 from django.shortcuts import render
+
+from .forms import UserCreateForm
 
 
 # Create your views here.
@@ -13,4 +11,4 @@ def create(request):
     context = {
         "forms": form,
     }
-    return render(request,"home.html",context)
+    return render(request, "home.html", context)
